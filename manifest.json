@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "CeX Voucher Filler",
+  "version": "2.0",
+  "description": "Drop your CeX voucher PDFs onto the checkout page and auto-fill the 'Add new CeX voucher' form.",
+  "permissions": ["storage", "offscreen"],
+  "host_permissions": ["https://*.webuy.com/*"],
+  "background": { "service_worker": "background.js" },
+  "content_scripts": [
+    {
+      "matches": ["https://*.webuy.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "CeX Voucher Filler (Alt+Shift+V)",
+    "default_icon": { "16": "icons/icon16.png", "32": "icons/icon32.png" }
+  },
+  "commands": {
+    "toggle-panel": {
+      "suggested_key": { "default": "Alt+Shift+V" },
+      "description": "Open or close the voucher panel"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
